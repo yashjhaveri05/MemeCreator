@@ -1,7 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Button from '@material-ui/core/Button';
+import '../index.css';
 
 const useStyles = makeStyles((theme) => ({
     pagination: {
@@ -17,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
         textAlign: "center",
         justifyContent: "center",
     },
-    button: {
-        padding: 0,
-    }
   }));
 
 const Pagination = ({ templatesPerPage, totalTemplates, paginate, currentPage }) => {
@@ -32,14 +28,16 @@ const Pagination = ({ templatesPerPage, totalTemplates, paginate, currentPage })
     }
 
     return (
-        <div>
-            <h2 className={classes.header}>Navigate Through Pages To Select Your Favorite Meme Template: </h2>
+        <div className="Pagination">
+            <h2 className={classes.header}>Navigate Through Pages To Select Your Favourite Meme Template: </h2>
             <ul className={classes.pagination}>
                 {pageNumbers.map(number => (
                 <li key={number} className='page-item'>
-                <ButtonGroup size="small" color={number === currentPage ? "primary": "secondary"} variant="contained" aria-label="primary button group" onClick={() => paginate(number)}  className={classes.button}>
-                    <Button>{number}</Button>
-                </ButtonGroup>
+                    <button
+                        className={number===currentPage?"selectedBtn":"btn"}  
+                        onClick={()=>paginate(number)} >
+                        {number}
+                    </button>
                 </li>
                 ))}
             </ul>

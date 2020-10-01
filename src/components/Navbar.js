@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     justifyContent: "center",
   },
+  appBar: {
+    top: 'auto',
+    bottom: 0,
+    backgroundColor: "rgb(107, 127, 215)",
+  },
   Link: {
     color: "black",
   }
@@ -26,7 +31,7 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h4" className={classes.title}><Link to="/" className={classes.Link}>Meme Creator</Link></Typography>
         </Toolbar>

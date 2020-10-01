@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     top: 'auto',
     bottom: 0,
-    backgroundColor: "red",
+    backgroundColor: "rgb(107, 127, 215)",
   },
   title: {
     flexGrow: 1,
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     textAlign: "center",
     justifyContent: "center",
+    color: "black"
   },
 }));
 
@@ -27,9 +28,9 @@ export default function Footer() {
 
   return (
     <div className={classes.root}>
-        <AppBar position="fixed" className={classes.appBar}>
+        <AppBar position="static" className={classes.appBar}>
             <Toolbar>
-                <Typography variant="h6" className={classes.title}>Created By Yash Jhaveri | ImgFlip API</Typography>
+                <Typography variant="h6" className={classes.title}>Yash Jhaveri | ImgFlip API</Typography>
             </Toolbar>
         </AppBar>
     </div>

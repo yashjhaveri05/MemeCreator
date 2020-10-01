@@ -46,7 +46,7 @@ const Main = () => {
                                 <Templates key={template.id} id={template.id} name={template.name} imgurl={template.url} boxes={template.box_count} loading={loading} />
                             </LazyLoad>
                         </Grid>
-                    ))};
+                    ))}
                 </Grid>
             </div>
         </div>

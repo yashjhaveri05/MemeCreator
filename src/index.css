@@ -1,3 +1,7 @@
+body{
+  background-color: #ddfbd2;
+}
+
 #Main{
   display: flex;
   flex-direction: column;
@@ -28,6 +32,13 @@
 
 .Template .Link{
   color: black;
+  text-decoration: none;
+}
+
+.Template .title{
+  font-weight: 900;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .Template .Image{
@@ -35,6 +46,19 @@
   width: 500px;
   height: 500px;
   margin-top: 2px;
+  border: 5px solid black;
+}
+
+.Template .root{
+  border: 5px solid black;
+  border-radius: 10px;
+  background-color: rgb(107, 127, 215);
+}
+
+.Meme .MemeImg{
+  width: 500px;
+  height: 500px;
+  margin-bottom: 30px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -42,5 +66,11 @@
     width: 300px;
     height: 300px;
     margin-top: 2px;
+    border: 5px solid black;
+  }
+  .Meme .MemeImg{
+    width: 300px;
+    height: 300px;
+    margin-bottom: 30px;
   }
 }

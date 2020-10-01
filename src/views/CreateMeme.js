@@ -5,6 +5,7 @@ import {Button,TextField} from '@material-ui/core';
 import Meme from './Meme';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card,Grid } from '@material-ui/core';
+import Image from '../assets/meme.jpg';
 
 const useStyles = makeStyles((theme) => ({
     form: {
@@ -22,17 +23,48 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: "column",
         justifyContent: "center",
         textAlign: "center",
+        backgroundColor: "#ddfbd2",
+        color: "black",
     },
     btn: {
         marginTop: 20,
         marginBottom: 20,
+        backgroundColor: "#ddfbd2",
+        color: "black",
     },
     card: {
-        marginTop: 10,
+        marginTop: 20,
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         textAlign: "center",
+        backgroundColor: "#6b7fd7",
+        border: "6px solid black"
+    },
+    meme: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+        textAlign: "center",
+    },
+    input: {
+        backgroundColor: "#ddfbd2",
+        color: "black",
+    },
+    label: {
+        fontSize: "1.3rem",
+        marginTop: 10,
+    },
+    first: {
+        marginTop: 10,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+    },
+    second: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
     }
   }));
 
@@ -43,8 +75,8 @@ export default function MemeCreator(){
     const box = boxes;
     let [val,setVal]=useState(Array(parseInt(box)).fill(''));
     let [result,setResult]=useState(null);
-    let [username,setUsername]=useState('');
-    let [pwd,setPwd]=useState('');
+    let [username,setUsername]=useState('yashjhaveri');
+    let [pwd,setPwd]=useState('yashjhaveri');
 
     const changeHandler=(e,number)=>{
         const t=[...val];
@@ -81,13 +113,18 @@ export default function MemeCreator(){
     return (
         <div>
             <Grid container spacing={2} justify="center" alignItems="center">
+                <Grid item sx={12} sm={12} md={3}>
+                    <img src={Image} alt="meme" width="365px" className={classes.first} />
+                </Grid>
                 <Grid item xs={12} sm={12} md={6}>
                     <Card className={classes.card}>
-                        <h1><u>Enter Details To Make The Meme</u></h1>
+                        <h1><u>Enter Details To Make The Meme</u></h1>  
                         <form onSubmit={submitHandler} className={classes.form} >
-                            <TextField id="outlined-basic" defaultValue={username} onChange={e => setUsername(e.target.value)} label="Enter Username For ImgFlip Website | Default: yashjhaveri" variant="outlined" />
-                            <br />
-                            <TextField id="outlined-basic" defaultValue={pwd} onChange={e => setPwd(e.target.value)} label="Enter Password For ImgFlip Website | Default: yashjhaveri" variant="outlined" />
+                            <label className={classes.label}>Enter Username(for ImgFlip Api):</label>
+                            <TextField id="outlined-basic" defaultValue={username} onChange={e => setUsername(e.target.value)} variant="outlined" className={classes.input} />
+                            <label className={classes.label}>Enter Password(for ImgFlip Api):</label>
+                            <TextField id="outlined-basic" defaultValue={pwd} onChange={e => setPwd(e.target.value)} type="password" variant="outlined" className={classes.input} />
+                            <label className={classes.label}>Enter Meme Content:</label>
                             {Array(parseInt(box)).fill(0).map((_,index) =>(
                                 <div key={index}>
                                     <TextField id="outlined-basic" defaultValue={val[index]} onChange={e=>changeHandler(e,index)} label={"Enter text "+(index+1)} variant="outlined" className={classes.text} />
@@ -96,10 +133,16 @@ export default function MemeCreator(){
                         </form>
                     </Card>
                 </Grid>
+                <Grid item sx={12} sm={12} md={3}>
+                    <img src={Image} alt="meme" width="365px" className={classes.second} />
+                </Grid>
             </Grid>
             <br />
-            <br />
-            {result === null ? null : <Meme meme={result.url} />}
+            <div className={classes.meme}>
+            {
+                result === null ? null : <Meme meme={result.url} />
+            }
+            </div>
         </div>
     )
 }

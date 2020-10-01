@@ -8,8 +8,22 @@ import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom'; 
 import LazyLoad from 'react-lazyload';
 import '../index.css';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container } from '@material-ui/core';
+
+const useStyles = makeStyles((theme) => ({
+    loader: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "center",
+    },
+    btn: {
+        backgroundColor: "#ddfbd2",
+    }
+  }));
 
 const Templates = ({id,name,imgurl,boxes,loading}) => {
+    const classes = useStyles();
 
     if (loading) 
     {
@@ -18,27 +32,32 @@ const Templates = ({id,name,imgurl,boxes,loading}) => {
 
     return(
         <div className="Template">
-            <Card className="root">
-                <CardActionArea>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {name}
-                        </Typography>
-                        <Button size="small" color="secondary" variant="contained">
-                            <Link to={`/${id}/${boxes}`} className="Link">Use Template and Create Meme</Link>
-                        </Button>
-                    </CardContent>
-                    <LazyLoad once={true} placeholder={<img src={imgurl} alt={name} />}>
-                        <CardMedia
-                            component="img"
-                            alt={id}                   
-                            className="Image"
-                            image={imgurl}
-                            title={name}
-                        />
-                    </LazyLoad>
-                </CardActionArea>
-            </Card>
+            <Container  fluid={true}>
+                <Card className="root">
+                    <CardActionArea>
+                        <CardContent>
+                            <Typography gutterBottom variant="p" component="p" className="title">
+                                {name}
+                            </Typography>
+                            <Button size="medium" className={classes.btn} variant="contained">
+                                <Link to={`/${id}/${boxes}`} className="Link">Use Template and Create Meme</Link>
+                            </Button>
+                        </CardContent>
+                        <div className={classes.loader} >
+                        <LazyLoad once={true} placeholder={<img src={imgurl} alt={name} />}>
+                            <CardMedia
+                                component="img"
+                                alt={id}                   
+                                className="Image"
+                                image={imgurl}
+                                title={name}
+                            />
+                        </LazyLoad>
+                        </div>
+                        <br />
+                    </CardActionArea>
+                </Card>
+            </Container>
             <br />
         </div>
 

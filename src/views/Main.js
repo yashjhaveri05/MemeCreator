@@ -39,7 +39,7 @@ const Main = () => {
         <div id="Main">
             <Pagination templatesPerPage={templatesPerPage} totalTemplates={templates.length} paginate={paginate} currentPage={currentPage} />
             <div className="Grid">
-                <Grid container spacing={2} justify="center" alignItems="center">
+                <Grid container justify="center" alignItems="center">
                     {currentTemplates.map((template)=>(
                         <Grid item xs={12} sm={12} md={6} key={template.id}>
                             <LazyLoad key={template.id} height={100} offset={[-100,100]} placeholder={<Spinner />}>

@@ -75,8 +75,8 @@ export default function MemeCreator(){
     const box = boxes;
     let [val,setVal]=useState(Array(parseInt(box)).fill(''));
     let [result,setResult]=useState(null);
-    let [username,setUsername]=useState('yashjhaveri');
-    let [pwd,setPwd]=useState('yashjhaveri');
+    let [username,setUsername]=useState(`${process.env.REACT_APP_USER}`);
+    let [pwd,setPwd]=useState(`${process.env.REACT_APP_PWD}`);
 
     const changeHandler=(e,number)=>{
         const t=[...val];
@@ -113,8 +113,8 @@ export default function MemeCreator(){
     return (
         <div>
             <Grid container spacing={2} justify="center" alignItems="center">
-                <Grid item sx={12} sm={12} md={3}>
-                    <img src={Image} alt="meme" width="365px" className={classes.first} />
+                <Grid item xs={12} sm={12} md={3}>
+                    <img src={Image} alt="meme" width="100%" className={classes.first} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={6}>
                     <Card className={classes.card}>

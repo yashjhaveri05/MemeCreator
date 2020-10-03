@@ -5,12 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
   appBar: {
-    top: 'auto',
-    bottom: 0,
     backgroundColor: "rgb(107, 127, 215)",
   },
   title: {
@@ -27,7 +22,7 @@ export default function Footer() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div>
         <AppBar position="static" className={classes.appBar}>
             <Toolbar>
                 <Typography variant="h6" className={classes.title}>Yash Jhaveri | ImgFlip API</Typography>

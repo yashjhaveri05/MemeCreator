@@ -84,8 +84,8 @@ export default function MemeCreator(){
         setVal(t);
     }
     
-    const submitHandler=(event)=>{
-        event.preventDefault();
+    const submitHandler= async(e) =>{
+        e.preventDefault();
 
         const boxes=Array(box).fill(" ");
         for(let k=0;k<box;k++){
@@ -108,7 +108,6 @@ export default function MemeCreator(){
         })
         .then((response)=>setResult(response.data.data))
         .catch((error)=>console.log(error));
-        
     }
     return (
         <div>
@@ -138,11 +137,14 @@ export default function MemeCreator(){
                 </Grid>
             </Grid>
             <br />
+            {
+                result === undefined ? alert("Invalid Username/Password") : 
             <div className={classes.meme}>
             {
                 result === null ? null : <Meme meme={result.url} />
             }
             </div>
+            }
         </div>
     )
 }
